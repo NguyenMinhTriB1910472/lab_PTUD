@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:myshop/ui/products/product_detail_screen.dart';
+import 'package:myshop/ui/products/products_manager.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -21,12 +22,15 @@ class MyApp extends StatelessWidget {
           secondary: Colors.deepOrange
         ),
       ),
-      home: Container(
-        color: Colors.green,
+      home: SafeArea(
+        child: ProductDetailScreen(
+          ProductManager().items[0],
+        ),
       ),
     );
   }
 }
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
