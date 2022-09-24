@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/products/products_grid.dart';
 
+import '../../models/top_right_badge.dart';
+import '../cart/cart_manager.dart';
 import '../cart/cart_screen.dart';
 import '../shared/app_drawer.dart';
 
@@ -33,12 +35,18 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen>{
   }
 
   Widget buildShoppingCartIcon(){
-    return IconButton(
-        icon: const Icon(Icons.shopping_cart),
-        onPressed: (){
+    return TopRightBadge(
+      data: CartManager().productCount,
+      child: IconButton(
+        icon: const Icon(
+          Icons.shopping_cart,
+        ),
+        onPressed: () {
           Navigator.of(context).pushNamed(CartScreen.routeName);
-        }
+        },
+      ),
     );
+
   }
 
   Widget buildProductFillterMenu() {
@@ -61,4 +69,5 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen>{
             ,child: Text('Show all'))
         ]);
   }
+
 }
