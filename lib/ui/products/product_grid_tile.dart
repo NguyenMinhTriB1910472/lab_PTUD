@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myshop/ui/products/product_detail_screen.dart';
 
 import '../../models/Product.dart';
 
@@ -18,7 +19,10 @@ class ProductGridTile extends StatelessWidget{
         footer: buildGridFooterBar(context),
         child: GestureDetector(
           onTap: (){
-            print("Go to product detail screen");
+            Navigator.of(context).pushNamed(
+              ProductDetailScreen.routeName,
+              arguments: product.id,
+            );
           },
           child: Image.network(
             product.imageUrl,

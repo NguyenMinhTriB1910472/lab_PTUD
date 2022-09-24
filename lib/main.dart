@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/cart/cart_screen.dart';
+import 'package:myshop/ui/order/orders_screen.dart';
 import 'package:myshop/ui/products/product_detail_screen.dart';
 import 'package:myshop/ui/products/product_overview_screen.dart';
 import 'package:myshop/ui/products/products_manager.dart';
 import 'package:myshop/ui/products/user_product_screen.dart';
-import 'order/orders_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,23 +17,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-
-      theme: ThemeData(
-        fontFamily: 'Lato',
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.purple,
-        ).copyWith(
-          secondary: Colors.deepOrange
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          fontFamily: 'Lato',
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.purple,
+          ).copyWith(secondary: Colors.deepOrange),
         ),
-      ),
-      home: const SafeArea(
-        child: OrdersScreen(),
-      ),
-    );
+        home: const ProductOverviewScreen(),
+        routes: {
+          CartScreen.routeName: (ctx) => const CartScreen(),
+          OrdersScreen.routeName: (ctx) => const OrdersScreen(),
+          UserProductScreen.routeName: (ctx) => const UserProductScreen(),
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name == ProductDetailScreen.routeName) {
+            final productId = settings.arguments as String;
+            return MaterialPageRoute(
+              builder: (ctx) {
+                return ProductDetailScreen(
+                  ProductManager().findById(productId),
+                );
+              },
+            );
+          }
+          return null;
+        });
   }
 }
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

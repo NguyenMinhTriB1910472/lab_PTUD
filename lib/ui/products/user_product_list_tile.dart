@@ -24,6 +24,7 @@ class UserProductListTile extends StatelessWidget{
             buildDeleteButton(context)
           ],
         ),
+
       ),
     );
   }
