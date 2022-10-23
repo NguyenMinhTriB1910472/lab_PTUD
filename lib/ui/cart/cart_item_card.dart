@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab3_myshop/ui/cart/cart_manager.dart';
+import 'package:lab3_2/ui/cart/cart_manager.dart';
 //
 import 'package:provider/provider.dart';
 //

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab3_myshop/ui/products/products_manager.dart';
+import 'package:lab3_2/ui/products/edit_product_screen.dart';
+import 'package:lab3_2/ui/products/products_manager.dart';
 
 import '../../models/product.dart';
 
@@ -53,13 +54,12 @@ class UserProductListTile extends StatelessWidget {
 
   Widget buildEditButton(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.edit),
+      icon: const Icon(Icons.edit),
       onPressed: () {
-        print('Go to edit product screen');
-        //
-        const snackBar = SnackBar(content: Text('Go to edit product screen'));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        //
+        Navigator.of(context).pushNamed(
+          EditProductScreen.routeName,
+          arguments: product.id
+        );
       },
       color: Theme.of(context).primaryColor,
     );

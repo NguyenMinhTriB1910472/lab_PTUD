@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab3_2/ui/products/edit_product_screen.dart';
 //
 import 'package:provider/provider.dart';
 //
@@ -48,11 +49,13 @@ class UserProductScreen extends StatelessWidget {
     );
   }
 
-  Widget buildAddButton() {
+  Widget buildAddButton(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.add),
       onPressed: () {
-        print('Go to edit product screen');
+        Navigator.of(context).pushNamed(
+            EditProductScreen.routeName
+        );
       },
     );
   }

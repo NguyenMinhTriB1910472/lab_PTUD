@@ -1,4 +1,4 @@
-import 'package:lab3_myshop/models/product.dart';
+import 'package:lab3_2/models/product.dart';
 
 import '../../models/cart_item.dart';
 import '../../models/product.dart';
